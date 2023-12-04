@@ -20,8 +20,6 @@ export default function play() {
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
-		console.log(grade, password);
-
 		const response = await fetch('/api/grade', {
 			method: 'POST',
 			headers: {
