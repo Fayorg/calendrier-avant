@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+1. First copy the .env.example file and modify it as needed.
+
+2. Push the prisma model to the database :
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx prisma db push
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Generate the user/password combination. (WIP)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Install the dependencies :
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm install
+```
 
-## Learn More
+5. Build the project :
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. Run the project :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm run start
+```
 
-## Deploy on Vercel
+7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Credits
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Made with love by [Elie Baier](https://github.com/fayorg) & [Tim Haller](https://github.com/timhaller).
+
+We'd like to thanks Ms. Tixhon for the good idea and the great gifts!
+
+Don't forget : FUCK MATH!
+
+## Licence
+
+This project is under the MIT licence. A copy of the licence comes with the program.
