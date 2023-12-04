@@ -8,17 +8,30 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Keys {
-    id     Int     @id @default(autoincrement())
-    key    String  @unique
-    grades Grade[]
+model Users {
+    id        Int       @id @default(autoincrement())
+    key       String    @unique
+    grades    Grade[]
+    firstName String
+    lastName  String
+    testOn    DateTime? @db.Date
+    isTeacher Boolean   @default(false)
+    test      Test?
+    createdAt DateTime  @default(now())
+}
+
+model Test {
+    id        Int      @id @default(autoincrement())
+    testOf    Users    @relation(fields: [testOfId], references: [id])
+    testOfId  Int      @unique
+    testOn    DateTime @default(now())
+    createdAt DateTime @default(now())
 }
 
 model Grade {
     id        Int      @id @default(autoincrement())
-    oral      Int
-    grade     Float
-    key       Keys     @relation(fields: [keyId], references: [id])
-    keyId     Int
+    user      Users    @relation(fields: [userId], references: [id])
+    userId    Int
+    note      String
     createdAt DateTime @default(now())
 }
