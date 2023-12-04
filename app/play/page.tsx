@@ -7,17 +7,21 @@ export default function play() {
 	const [grade, setGrade] = useState<number>(0);
 	const router = useRouter();
 	let voted;
-	let password: string | null;
+	const [password, setPassword] = useState<string | null>('');
 	useEffect(() => {
-		password = localStorage.getItem('@password');
+		const pass = localStorage.getItem('@password');
+		setPassword(pass);
 		voted = localStorage.getItem('@voted');
-		if (!password) {
+		if (!pass) {
 			router.push('/');
 		}
 	}, []);
 
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+
+		console.log(grade, password);
+
 		const response = await fetch('/api/grade', {
 			method: 'POST',
 			headers: {
