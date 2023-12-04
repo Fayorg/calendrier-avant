@@ -7,3 +7,16 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Keys {
+  id  Int    @id @default(autoincrement())
+  key String @unique
+}
+
+model Grade {
+  id        Int      @id @default(autoincrement())
+  test      Int
+  grade     Float
+  key       String
+  createdAt DateTime @default(now())
+}
