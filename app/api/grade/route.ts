@@ -8,15 +8,11 @@ interface IBody {
 
 export async function POST(req: Request){
     const body = await req.json() as IBody
-    await prisma.grade.findFirst({where: {key: body.key}}).then(async (grade) => {
-        if (grade) {
-            await prisma.grade.create({data: {test: 1, grade: body.grade, key: body.key}})
-            return NextResponse.json({message: 'Grade updated', cookie: 'voted=true'}, {status: 200})
-        } else {
-            return NextResponse.json(
-                JSON.stringify({message: 'Key not found'}), {status: 404}
-            )
-        }
-    });
+    const grade = await prisma.grade.findFirst({ select: { id: true}, where: { oral: 1, key: { key: body.key } } });
+    if(grade) return NextResponse.json({message: 'Deja vote'}, {status: 403});
+
+    const gradeCreated = await prisma.grade.create({ data: { key: { connect: { key: body.key } }, grade: body.grade, oral: 1 } });
+    if(gradeCreated) return NextResponse.json({message: 'Vote enregistré'}, {status: 200});
+
     return NextResponse.json({message: 'Server error'}, {status: 500})
 }

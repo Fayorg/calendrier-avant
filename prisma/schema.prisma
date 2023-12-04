@@ -16,7 +16,7 @@ model Keys {
 
 model Grade {
     id        Int      @id @default(autoincrement())
-    test      Int
+    oral      Int
     grade     Float
     key       Keys     @relation(fields: [keyId], references: [id])
     keyId     Int

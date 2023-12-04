@@ -22,9 +22,6 @@ export default function play() {
 
 		const response = await fetch('/api/grade', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
 			body: JSON.stringify({ grade, key: password }),
 		});
 		const data = await response.json();
