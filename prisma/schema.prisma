@@ -32,6 +32,7 @@ model Grade {
     id        Int      @id @default(autoincrement())
     user      Users    @relation(fields: [userId], references: [id])
     userId    Int
-    note      String
+    grade     Float
+    note      String?
     createdAt DateTime @default(now())
 }
