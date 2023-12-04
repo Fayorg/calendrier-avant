@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         await prisma.grade.findFirst({where: {key: body.key}}).then(async (grade) => {
             if (grade) {
                 await prisma.grade.create({data: {test: 1, grade: body.grade, key: body.key}})
-                res.status(200).json({message: 'Grade updated'})
+                res.status(200).json({message: 'Grade updated', cookie: 'voted=true'})
             } else {
                 res.status(404).json({message: 'Key not found'})
             }
