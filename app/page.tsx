@@ -1,15 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
 	const [password, setPassword] = useState('');
+	const router = useRouter();
 
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
-		console.log(password);
-		setPassword('');
+		localStorage.setItem('@password', password);
+		router.push('/play');
 	}
 
 	return (
