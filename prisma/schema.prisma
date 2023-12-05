@@ -9,15 +9,14 @@ generator client {
 }
 
 model Users {
-    id        Int       @id @default(autoincrement())
-    key       String    @unique
+    id        Int      @id @default(autoincrement())
+    key       String   @unique
     grades    Grade[]
     firstName String
     lastName  String
-    testOn    DateTime? @db.Date
-    isTeacher Boolean   @default(false)
+    isTeacher Boolean  @default(false)
     test      Test?
-    createdAt DateTime  @default(now())
+    createdAt DateTime @default(now())
 }
 
 model Test {
