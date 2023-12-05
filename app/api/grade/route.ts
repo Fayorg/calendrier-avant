@@ -80,4 +80,5 @@ export async function POST(req: Request){
             createdAt: grade.createdAt
         }
     });
+    return NextResponse.json({message: 'Server error'}, {status: 500})
 }
