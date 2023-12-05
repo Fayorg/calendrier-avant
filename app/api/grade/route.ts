@@ -1,6 +1,6 @@
 import {NextResponse} from "next/server";
 
-import prisma from '@lib/prisma';
+import prisma from "@/lib/prisma";
 interface IBody {
     key: string
     grade: number
