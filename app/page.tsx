@@ -23,7 +23,7 @@ export default function Home() {
 	return (
 		<div className={''}>
 			<h1 className={'border-l-blue-600'}>Calendrier-avent</h1>
-			<p>Merci d'entrer votre clé :</p>
+			<p>Merci d&apos;entrer votre clé :</p>
 			<form onSubmit={handleSubmit}>
 				<input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
 				<input type="submit" value="Submit"></input>
