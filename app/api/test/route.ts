@@ -1,14 +1,11 @@
-import {NextResponse} from "next/server";
-
+import {NextRequest, NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-interface IBody {
-    key: string
-    grade: number
-    testId: number
-}
 
-export async function POST(req: Request){
-    const body: IBody = await req.json();
+export async function GET(req: NextRequest){
+    const date = req.nextUrl.searchParams.get("date");
+    const key = req.nextUrl.searchParams.get("key");
+    
+    const usableDate = new Date(date || new Date());
 
     const test = await prisma.test.findFirst({
         select: {
@@ -30,40 +27,19 @@ export async function POST(req: Request){
                 },
                 where: {
                     user: {
-                        key: body.key
+                        key: key || ""
                     }
                 }
             }
         },
         where: {
-            id: body.testId
+            testOn: new Date(usableDate.getFullYear() + "-" + (usableDate.getMonth() + 1) + "-" + (usableDate.getDate().toString().length === 1 ? "0" + usableDate.getDate() : usableDate.getDate()))
         }
     });
 
     if(!test){
         return NextResponse.json({error: "Test not found"}, {status: 404});
     }
-
-    if(test.grades.length > 0){
-        return NextResponse.json({error: "You have already voted"}, {status: 403});
-    }
-
-    const grade = await prisma.grade.create({
-        data: {
-            note: "",
-            grade: body.grade,
-            user: {
-                connect: {
-                    key: body.key
-                }
-            },
-            test: {
-                connect: {
-                    id: test.id
-                }
-            }
-        }
-    });
 
     return NextResponse.json({
         id: test.id,
@@ -75,10 +51,9 @@ export async function POST(req: Request){
         },
         vote: {
             hasVoted: test.grades?.length > 0,
-            grade: grade.grade,
-            note: grade.note,
-            createdAt: grade.createdAt
+            grade: test.grades[0]?.grade,
+            note: test.grades[0]?.note,
+            createdAt: test.grades[0]?.createdAt
         }
     });
-    return NextResponse.json({message: 'Server error'}, {status: 500})
 }
