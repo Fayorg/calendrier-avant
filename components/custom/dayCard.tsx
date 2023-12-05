@@ -15,26 +15,35 @@ import {
 
 type CardProps = React.ComponentProps<typeof Card>
 
+import { useRouter } from "next/navigation";
+
+
 interface DayCardProps extends CardProps {
     day: number,
     name: string,
-    enabled?: boolean | false,
-    oral?: boolean | true,
-}
-
-function say() {
-    alert("Hello")
+    enabled?: boolean,
+    oral?: boolean,
 }
 
 export function DayCard({ className, ...props }: DayCardProps) {
+    const router = useRouter();
+
+    function route(enabled: boolean, day: number) {
+        if (enabled) {
+            router.push("/results/" + day);
+        } else {
+            return;
+        }
+    }
+
     return (
-        <Card className={cn("w-[300px] h-[300px]", className)} {...props} onClick={say}>
+        <Card className={cn(`w-full ${props.enabled && props.oral ? "hover:bg-slate-100" : null}`, className)} {...props} onClick={() => {route(props.enabled || false, props.day)}}>
             <CardContent className="p-4 gap-4 h-full">
                 {props.enabled ?
-                <div className="rounded-md p-4 h-full flex flex-col items-end bg-blue-500">
-                    <h1 className="text-[100px] font-bold justify-end">1</h1>
+                <div className="rounded-md p-4 h-full flex flex-col items-end">
+                    <h1 className="text-[100px] font-bold justify-end">{props.day}</h1>
                     <div className="flex flex-col">
-                        <h2 className="text-2xl font-bold">Michal Polka</h2>
+                        <h2 className="text-2xl font-bold">{props.name}</h2>
                     </div>
                 </div>
                 :
