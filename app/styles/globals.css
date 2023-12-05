@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: ${bgL.hslRaw};
+    --foreground: ${textL.hslRaw};
+    --card: ${bgL.hslRaw};
+    --card-foreground: ${textL.hslRaw};
+    --popover: ${bgL.hslRaw};
+    --popover-foreground: ${textL.hslRaw};
+    --primary: ${primaryL.hslRaw};
+    --primary-foreground: ${primaryFgL.hslRaw};
+    --secondary: ${secondaryL.hslRaw};
+    --secondary-foreground: ${secondaryFgL.hslRaw};
+    --muted: ${bgL.hslRaw.20};
+    --muted-foreground: ${textL.hslRaw.70};
+    --accent: ${accentL.hslRaw};
+    --accent-foreground: ${accentFgL.hslRaw};
+    --destructive: 0 85% 60%;
+    --destructive-foreground: ${textL.hslRaw};
+    --border: ${bgL.hslRaw.20};
+    --input: ${bgL.hslRaw.20};
+    --ring: ${accentL.hslRaw.40};
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: ${bgD.hslRaw};
+    --foreground: ${textD.hslRaw};
+    --card: ${bgD.hslRaw};
+    --card-foreground: ${textD.hslRaw};
+    --popover: ${bgD.hslRaw};
+    --popover-foreground: ${textD.hslRaw};
+    --primary: ${primaryD.hslRaw};
+    --primary-foreground: ${primaryFgD.hslRaw};
+    --secondary: ${secondaryD.hslRaw};
+    --secondary-foreground: ${secondaryFgD.hslRaw};
+    --muted: ${bgD.hslRaw.80};
+    --muted-foreground: ${textD.hslRaw};
+    --accent: ${accentD.hslRaw};
+    --accent-foreground: ${accentFgD.hslRaw};
+    --destructive: 0 62% 30%;
+    --destructive-foreground: ${textD.hslRaw.10};
+    --border: ${bgD.hslRaw.60};
+    --input: ${bgD.hslRaw.80};
+    --ring: ${accentD.hslRaw.60};
+  }
+}
