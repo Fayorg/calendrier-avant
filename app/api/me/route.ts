@@ -7,6 +7,17 @@ export async function GET(req: NextRequest){
     if(!key) return NextResponse.json({error: "No key provided"}, {status: 400});
 
     const user = await prisma.users.findUnique({
+        select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+            isTeacher: true,
+            test: {
+                select: {
+                    testOn: true
+                }
+            }
+        },
         where: {
             key
         }
@@ -19,6 +30,7 @@ export async function GET(req: NextRequest){
         firstName: user.firstName,
         lastName: user.lastName,
         isTeacher: user.isTeacher,
+        testOn: user.test?.testOn
     });
     
 }
