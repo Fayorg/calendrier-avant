@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 
 export async function GET(req: NextRequest){
     const date = req.nextUrl.searchParams.get("date");
+    const key = req.nextUrl.searchParams.get("key");
 
     const test = await prisma.test.findFirst({
         select: {
@@ -14,6 +15,18 @@ export async function GET(req: NextRequest){
                     firstName: true,
                     lastName: true,
                     isTeacher: true
+                }
+            },
+            grades: {
+                select: {
+                    note: true,
+                    grade: true,
+                    createdAt: true,
+                },
+                where: {
+                    user: {
+                        key: key || ""
+                    }
                 }
             }
         },
@@ -33,6 +46,12 @@ export async function GET(req: NextRequest){
             firstName: test.testOf.firstName,
             lastName: test.testOf.lastName,
             isTeacher: test.testOf.isTeacher
+        },
+        vote: {
+            hasVoted: test.grades?.length > 0,
+            grade: test.grades[0]?.grade,
+            note: test.grades[0]?.note,
+            createdAt: test.grades[0]?.createdAt
         }
     });
 }
