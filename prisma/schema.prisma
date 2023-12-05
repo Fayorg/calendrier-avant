@@ -23,7 +23,7 @@ model Test {
     id        Int      @id @default(autoincrement())
     testOf    Users    @relation(fields: [testOfId], references: [id])
     testOfId  Int      @unique
-    testOn    DateTime @default(now())
+    testOn    DateTime @db.Date
     createdAt DateTime @default(now())
 }
 
