@@ -37,7 +37,7 @@ export function DayCard({ className, ...props }: DayCardProps) {
     }
 
     return (
-        <Card className={cn(`w-full ${props.enabled && props.oral ? "hover:bg-slate-100" : null}`, className)} {...props} onClick={() => {route(props.enabled || false, props.day)}}>
+        <Card className={cn(`w-full ${props.enabled && props.oral ? "hover:bg-slate-100 hover:cursor-pointer" : "hover:cursor-not-allowed"}`, className)} {...props} onClick={() => {route(props.enabled || false, props.day)}}>
             <CardContent className="p-4 gap-4 h-full">
                 {props.enabled ?
                 <div className="rounded-md p-4 h-full flex flex-col items-end">

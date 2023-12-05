@@ -25,7 +25,8 @@ export function Chart({...props}: ChartProps) {
                     fontSize={12}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={(value) => `$${value}`}
+                    allowDecimals={false}
+                    tickFormatter={(value) => `${value}`}
                 />
                 <Bar dataKey="total" fill="#80a256" radius={[4, 4, 0, 0]} />
             </BarChart>
