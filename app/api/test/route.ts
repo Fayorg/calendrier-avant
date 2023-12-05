@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 export async function GET(req: NextRequest){
     const date = req.nextUrl.searchParams.get("date");
     const key = req.nextUrl.searchParams.get("key");
+    
+    const usableDate = new Date(date || new Date());
 
     const test = await prisma.test.findFirst({
         select: {
@@ -31,7 +33,7 @@ export async function GET(req: NextRequest){
             }
         },
         where: {
-            testOn: (date ? new Date(date) : new Date())
+            testOn: new Date(usableDate.getFullYear() + "-" + (usableDate.getMonth() + 1) + "-" + (usableDate.getDate().toString().length === 1 ? "0" + usableDate.getDate() : usableDate.getDate()))
         }
     });
 
