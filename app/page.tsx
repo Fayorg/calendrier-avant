@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from "@components/ui/button";
-import { Input } from "@/components/ui/input"
 
 export default function Home() {
 	const [password, setPassword] = useState('');
@@ -24,8 +22,6 @@ export default function Home() {
 				<input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
 				<input type="submit" value="Submit"></input>
 			</form>
-			<Button>Button</Button>
-			<Input type="text" />
 		</div>
 	);
 }
