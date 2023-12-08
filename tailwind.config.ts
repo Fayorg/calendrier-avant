@@ -1,20 +1,24 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  colors: {
-    'text': '#0f0f0f',
-    'background': '#ffffff',
-    'primary': '#3a5947',
-    'secondary': '#80a256',
-    'accent': '#9a1a33',
-  },
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      display: ["Satisfy", "cursive"],
+    },
     extend: {
+      colors: {
+        "backgroundColor": "#000000",
+        "textColor": "#F0F0F0",
+        "textFades": "#B0B0B0",
+        "primary": "#3A5945",
+        "secondary": "#86A95B",
+        "accent": "#991A33"
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -24,4 +28,5 @@ const config: Config = {
   },
   plugins: [],
 }
+
 export default config
