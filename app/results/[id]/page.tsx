@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     }
 
     return (
-        <div className={"p-4 md:p-12 w-full h-screen bg-black"}>
+        <div className={"p-4 md:p-12 w-full h-screen bg-black flex flex-col justify-between gap-y-4"}>
             <Image src={logo} alt={"Logo"} width={100} height={200} className={"mx-auto w-full md:w-[400px]"}/>
             <Chart data={data}/>
         </div>
