@@ -27,7 +27,6 @@ export default function Play() {
 		<div className={"w-full h-[100vh] text-[#F0F0F0] bg-black p-12 flex flex-col items-center justify-center gap-y-28"}>
 			<Image src={Logo} alt={"Logo"} width={100} height={200} className={"mx-auto w-full md:w-[400px]"}/>
 			<TestCard data={data} error={error} isLoading={isLoading} />
-			{data && console.log(data)}
 			{data && data.status == 200 && password && <GradingForm password={password} data={data} />}
 			<div>
 				<button
@@ -36,7 +35,7 @@ export default function Play() {
 						router.push('/');
 					}}
 				>
-					<Image src={LogOut} alt={"Logo"} width={100} height={200} className={"mx-auto w-full md:w-[400px]"}/>
+					<Image src={LogOut} alt={"Logo"} width={50} height={50} className={"mx-auto w-full md:w-[400px]"}/>
 				</button>
 			</div>
 		</div>
