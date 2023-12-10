@@ -1,40 +1,43 @@
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  key       String   @unique
-  firstName String
-  lastName  String
-  isTeacher Boolean  @default(false)
-  createdAt DateTime @default(now())
-  grades    Grade[]
-  test      Test?
+    id        Int      @id @default(autoincrement())
+    key       String   @unique
+    firstName String
+    lastName  String
+    isTeacher Boolean  @default(false)
+    createdAt DateTime @default(now())
+    grades    Grade[]
+    test      Test?
 }
 
 model Test {
-  id        Int      @id @default(autoincrement())
-  testOfId  Int      @unique
-  testOn    DateTime @db.Date
-  createdAt DateTime @default(now())
-  testOf    Users    @relation(fields: [testOfId], references: [id])
-  grades    Grade[]
+    id           Int      @id @default(autoincrement())
+    testOfId     Int      @unique
+    testOn       DateTime @db.Date
+    createdAt    DateTime @default(now())
+    testOf       Users    @relation(fields: [testOfId], references: [id])
+    grades       Grade[]
+    isActive     Boolean  @default(false)
+    isPassed     Boolean  @default(false)
+    teacherGrade Float?
 }
 
 model Grade {
-  id        Int      @id @default(autoincrement())
-  userId    Int
-  note      String?
-  createdAt DateTime @default(now())
-  grade     Float
-  testId    Int
-  test      Test     @relation(fields: [testId], references: [id])
-  user      Users    @relation(fields: [userId], references: [id])
+    id        Int      @id @default(autoincrement())
+    userId    Int
+    note      String?
+    createdAt DateTime @default(now())
+    grade     Float
+    testId    Int
+    test      Test     @relation(fields: [testId], references: [id])
+    user      Users    @relation(fields: [userId], references: [id])
 }

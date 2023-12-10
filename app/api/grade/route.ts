@@ -1,4 +1,4 @@
-import {NextResponse} from "next/server";
+import {NextRequest, NextResponse} from "next/server";
 
 import prisma from "@/lib/prisma";
 interface IBody {
@@ -80,5 +80,14 @@ export async function POST(req: Request){
             createdAt: grade.createdAt
         }
     });
-    return NextResponse.json({message: 'Server error'}, {status: 500})
+}
+
+export async function GET(req: NextRequest){
+    const key = req.nextUrl.searchParams.get("key");
+
+    if(!key) return NextResponse.json({error: "No key provided"}, {status: 400});
+
+    const grades = await prisma.grade.findMany({})
+
+    return NextResponse.json(grades, {status: 200});
 }

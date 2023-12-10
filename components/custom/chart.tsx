@@ -1,6 +1,6 @@
 "use client"
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import {Santa} from "@components/custom/santa";
 
 interface ChartProps {
     data: {
@@ -11,25 +11,20 @@ interface ChartProps {
 
 export function Chart({...props}: ChartProps) {
     return (
-        <ResponsiveContainer width="100%" height={350}>
-            <BarChart data={props.data}>
-                <XAxis
-                    dataKey="name"
-                    stroke="#888888"
-                    fontSize={12}
-                    tickLine={false}
-                    axisLine={false}
-                />
-                <YAxis
-                    stroke="#888888"
-                    fontSize={12}
-                    tickLine={false}
-                    axisLine={false}
-                    allowDecimals={false}
-                    tickFormatter={(value) => `${value}`}
-                />
-                <Bar dataKey="total" fill="#80a256" radius={[4, 4, 0, 0]} />
-            </BarChart>
-        </ResponsiveContainer>
+        <div className={"text-[#F0F0F0]"}>
+            <div className={"flex flex-row justify-between w-full items-end"}>
+                {props.data.map((item, index) => (
+                    <Santa height={item.total} key={index}/>
+                ))}
+            </div>
+            <div className={"flex flex-row justify-between w-full items-end mt-2"}>
+                {props.data.map((item, index) => (
+                    <div className={"w-[100px] h-fit flex flex-col items-center"} key={index}>
+                        <div className={"h-[14px] w-[3pt] bg-white"}/>
+                        <span className={""}>{item.name}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }

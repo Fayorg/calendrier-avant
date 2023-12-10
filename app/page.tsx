@@ -1,7 +1,14 @@
 'use client';
 
+import { Poppins } from 'next/font/google'
+import { Check } from 'lucide-react'
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+
+import logo from '../images/logo.svg';
+import Image from "next/image";
+import {Input} from "@components/ui/input";
+import {white} from "next/dist/lib/picocolors";
 
 export default function Home() {
 	const [password, setPassword] = useState('');
@@ -21,12 +28,14 @@ export default function Home() {
 	}
 
 	return (
-		<div className={''}>
-			<h1 className={'border-l-blue-600'}>Calendrier-avent</h1>
-			<p>Merci d&apos;entrer votre clé :</p>
-			<form onSubmit={handleSubmit}>
-				<input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-				<input type="submit" value="Submit"></input>
+		<div className={"w-full h-screen text-[#F0F0F0] bg-black p-12 flex flex-col items-center justify-center gap-y-28"}>
+			<Image src={logo} alt={"Logo"} width={100} height={200} className={"mx-auto w-full md:w-[400px]"}/>
+			<form onSubmit={handleSubmit} className={"flex flex-row gap-4 w-full md:w-[400px]"}>
+				<Input type="password" placeholder="Mot de passe" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}></Input>
+				<input type="submit" value="Submit" id="submit" className={"hidden"} />
+				<label htmlFor="submit" className={"w-[54px] h-[54px] bg-secondary rounded-[20px] contents-none grid place-content-center"}>
+					<Check width={24} height={24} color={"white"}/>
+				</label>
 			</form>
 		</div>
 	);
