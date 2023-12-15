@@ -16,6 +16,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: fayorg/calendrier-avant
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 
 jobs:
