@@ -29,10 +29,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 		});
 	}
 
-	for (let grade in grades) {
-		console.log(grade);
-	}
-
 	return (
 		<div className={'p-4 md:p-12 w-full h-screen bg-black flex flex-col justify-between gap-y-4'}>
 			{teacherGrade && (
