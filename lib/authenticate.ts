@@ -1,6 +1,7 @@
 import Credentials from "next-auth/providers/credentials";
 import prisma from "./prisma";
 import { getServerSession, RequestInternal, type NextAuthOptions, User } from "next-auth";
+import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next"
 
 export async function authenticate(key: string) {
     console.log("Running authenticate function with key: " + key);
@@ -71,5 +72,10 @@ export const authOptions: NextAuthOptions = {
       })
     ],
   };
+
+// Use it in server contexts
+export function auth(...args: [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]] | [NextApiRequest, NextApiResponse] | []) {
+  return getServerSession(...args, authOptions)
+}
 
 export const getAuthServerSession = () => getServerSession(authOptions);

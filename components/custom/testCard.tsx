@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Ban, Snowflake, CircleOff } from 'lucide-react';
 
 export function TestCard({ data, error, isLoading }: { data: any; error: any; isLoading: boolean }) {
-	//console.log(data);
 	if (isLoading)
 		return (
 			<div className={'w-fit h-fit relative'}>
@@ -27,7 +26,7 @@ export function TestCard({ data, error, isLoading }: { data: any; error: any; is
 				</div>
 			</div>
 		);
-	if (data.status == 404)
+	if (!data)
 		return (
 			<div className={'w-fit h-fit relative'}>
 				<Image src={Calendar} alt={'Calendrier absolute'} />
