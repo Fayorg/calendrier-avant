@@ -36,14 +36,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 			<Image src={logo} alt={'Logo'} width={100} height={200} className={'mx-auto w-full md:w-[400px]'} />
 			{teacherGrade && (
 				<div className={'flex justify-center relative w-full'}>
-					{/* <p className="text-white">Mme Tixhon :</p>
-					<h2 className={'text-4xl font-bold text-white'}>{teacherGrade.grade}</h2> */}
-					{/* <div className={'flex items-center bg-red-500 relative'}>
-						<Image src={ginger} alt={'Logo'} width={120} height={120} className={''} />
-						<h2 className={'text-3xl font-bold text-white absolute left-[60px]'}>{teacherGrade.grade}</h2>
-					</div> */}
-
-					{/* I want to have the image with a width of 120 and in the center I want to have the h2 containing the teacher's grade */}
 					<div className={'flex items-center text-center'}>
 						<Image src={ginger} alt={'Logo'} width={120} height={120} className={'inline-flex'} />
 						<h2 className={'text-4xl font-bold text-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'}>{teacherGrade.grade}</h2>
