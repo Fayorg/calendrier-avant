@@ -4,7 +4,6 @@ import { getServerSession, RequestInternal, type NextAuthOptions, User } from "n
 import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next"
 
 export async function authenticate(key: string) {
-    console.log("Running authenticate function with key: " + key);
     const user = await prisma.users.findUnique({
         select: {
             id: true,
@@ -16,8 +15,6 @@ export async function authenticate(key: string) {
             key: key
         }
     });
-
-    console.log("Found user: " + JSON.stringify(user));
 
     if(!user) return null;
 
@@ -61,11 +58,8 @@ export const authOptions: NextAuthOptions = {
            const { key } = credentials as {
             key: string
            };
-           console.log("Running authorize function with key: " + key)
 
            const user = await authenticate(key) as User | null
-
-           console.log("Found user in authorize: " + JSON.stringify(user));
   
           return user;
         }

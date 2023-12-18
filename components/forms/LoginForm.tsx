@@ -11,7 +11,6 @@ export function LoginForm() {
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 
-		console.log('Trying to sign in');
 		await signIn('credentials', {
 			key: password,
 			callbackUrl: '/play',
