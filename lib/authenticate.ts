@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
       async jwt({ token, user }) {
         if (user) {
-          token.userId = user.id;
+          token.userId = parseInt(user.id as string);
           token.firstName = user.firstName;
           token.lastName = user.lastName;
           token.isTeacher = user.isTeacher;
@@ -38,10 +38,12 @@ export const authOptions: NextAuthOptions = {
         return token;
       },
       async session({ session, token, user }) { 
-        session.user.id = token.userId;
-        session.user.firstName = token.firstName;
-        session.user.lastName = token.lastName;
-        session.user.isTeacher = token.isTeacher;
+        if(token) {
+            session.user.id = token.userId;
+            session.user.firstName = token.firstName;
+            session.user.lastName = token.lastName;
+            session.user.isTeacher = token.isTeacher;
+        }
         return session;
       },
     },

@@ -1,16 +1,18 @@
 import prisma from '@/lib/prisma';
 import ActiveCard from './ActiveCard';
 import { getAuthServerSession } from '@/lib/authenticate';
+import { red } from 'next/dist/lib/picocolors';
+import { redirect } from 'next/navigation';
 
 export default async function Dashboard() {
+	const authSession = await getAuthServerSession();
+	console.log(authSession);
+	if (!authSession || !authSession.user.isTeacher) return redirect('/');
+
 	const tests = await prisma.test.findMany({ select: { isActive: true, isPassed: true, id: true, testOf: { select: { id: true, firstName: true, lastName: true, isTeacher: true } } } });
 
 	const activeTests = tests.filter((test) => test.isActive);
 	const passedTests = tests.filter((test) => test.isPassed);
-
-	const authSession = await getAuthServerSession();
-
-	console.log(authSession);
 
 	return (
 		<div>
