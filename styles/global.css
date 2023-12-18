@@ -47,4 +47,23 @@
 		--input: 0 0% 80%;
 		--ring: 348 71% 60%;
 	}
+
+	html {
+		padding-top: env(safe-area-inset-top);
+		padding-bottom: env(safe-area-inset-bottom);
+		background-color: black;
+	}
+
+	body {
+		padding-top: env(safe-area-inset-top);
+		padding-bottom: env(safe-area-inset-bottom);
+		background-color: black;
+	}
+
+	/* If using React, set height on the root div as well */
+	#root {
+		padding-top: env(safe-area-inset-top);
+		padding-bottom: env(safe-area-inset-bottom);
+		background-color: black;
+	}
 }

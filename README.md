@@ -32,7 +32,7 @@ npm run start
 
 ## Credits
 
-Made with love by [Elie Baier](https://github.com/fayorg) & [Tim Haller](https://github.com/timhaller).
+Designed & made with love by [Elie Baier](https://github.com/fayorg), [Tim Haller](https://github.com/timhaller) & [Michal Polka](https://github.com/michalpolka).
 
 We'd like to thanks Ms. Tixhon for the good idea and the great gifts!
 
