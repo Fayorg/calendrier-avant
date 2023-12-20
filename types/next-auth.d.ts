@@ -8,6 +8,7 @@ declare module "next-auth" {
             firstName: string;
             lastName: string
             isTeacher: boolean;
+            isAdmin: boolean;
         } & DefaultSession["user"];
     }
     interface User {
@@ -15,6 +16,7 @@ declare module "next-auth" {
         firstName: string;
         lastName: string
         isTeacher: boolean;
+        isAdmin: boolean;
     }
 }
 
@@ -24,5 +26,6 @@ declare module "next-auth/jwt" {
         firstName: string;
         lastName: string
         isTeacher: boolean;
+        isAdmin: boolean;
     } 
 }

@@ -9,7 +9,8 @@ export async function authenticate(key: string) {
             id: true,
             firstName: true,
             lastName: true,
-            isTeacher: true
+            isTeacher: true,
+            isAdmin: true
         },
         where: {
             key: key
@@ -26,24 +27,26 @@ export const authOptions: NextAuthOptions = {
       strategy: "jwt",
     },
     callbacks: {
-      async jwt({ token, user }) {
-        if (user) {
-          token.userId = parseInt(user.id as string);
-          token.firstName = user.firstName;
-          token.lastName = user.lastName;
-          token.isTeacher = user.isTeacher;
-        }
-        return token;
-      },
-      async session({ session, token, user }) { 
-        if(token) {
-            session.user.id = token.userId;
-            session.user.firstName = token.firstName;
-            session.user.lastName = token.lastName;
-            session.user.isTeacher = token.isTeacher;
-        }
-        return session;
-      },
+        async jwt({ token, user }) {
+            if (user) {
+                token.userId = parseInt(user.id as string);
+                token.firstName = user.firstName;
+                token.lastName = user.lastName;
+                token.isTeacher = user.isTeacher;
+                token.isAdmin = user.isAdmin;
+            }
+            return token;
+        },
+        async session({ session, token, user }) { 
+            if(token) {
+                session.user.id = token.userId;
+                session.user.firstName = token.firstName;
+                session.user.lastName = token.lastName;
+                session.user.isTeacher = token.isTeacher;
+                session.user.isAdmin = token.isAdmin;
+            }
+            return session;
+        },
     },
     pages: {
       signIn: '/',
