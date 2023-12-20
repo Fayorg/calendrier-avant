@@ -8,7 +8,6 @@ export async function getGrade(testId: number, userId: number) {
             grade: true,
             id: true,
             testId: true,
-            note: true,
             createdAt: true,
         },
         where: {
@@ -24,7 +23,6 @@ export async function addGrade(testId: number, userId: number, grade: number, no
     const newGrade = await prisma.grade.create({
         data: {
             grade: grade,
-            note: note,
             testId: testId,
             userId: userId,
         }

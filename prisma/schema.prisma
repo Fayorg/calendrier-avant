@@ -14,27 +14,25 @@ model Users {
     firstName String
     lastName  String
     isTeacher Boolean  @default(false)
+    isAdmin   Boolean  @default(false)
     createdAt DateTime @default(now())
     grades    Grade[]
     test      Test?
 }
 
 model Test {
-    id           Int      @id @default(autoincrement())
-    testOfId     Int      @unique
-    testOn       DateTime @db.Date
-    createdAt    DateTime @default(now())
-    testOf       Users    @relation(fields: [testOfId], references: [id])
-    grades       Grade[]
-    isActive     Boolean  @default(false)
-    isPassed     Boolean  @default(false)
-    teacherGrade Float?
+    id        Int      @id @default(autoincrement())
+    testOfId  Int      @unique
+    testOn    DateTime @db.Date
+    createdAt DateTime @default(now())
+    testOf    Users    @relation(fields: [testOfId], references: [id])
+    grades    Grade[]
+    isActive  Boolean  @default(false)
 }
 
 model Grade {
     id        Int      @id @default(autoincrement())
     userId    Int
-    note      String?
     createdAt DateTime @default(now())
     grade     Float
     testId    Int
