@@ -16,7 +16,6 @@ export async function getActiveTest(date: Date) {
 		select: {
 			id: true,
 			isActive: true,
-			isPassed: true,
 			testOf: {
 				select: {
 					id: true,
@@ -30,7 +29,6 @@ export async function getActiveTest(date: Date) {
 		},
 		where: {
 			isActive: true,
-			isPassed: false,
 			testOn: new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + (date.getDate().toString().length === 1 ? '0' + date.getDate() : date.getDate())),
 		},
 	});
@@ -41,7 +39,6 @@ export async function getActiveTestWithGrade(date: Date, userId: number) {
 		select: {
 			id: true,
 			isActive: true,
-			isPassed: true,
 			testOf: {
 				select: {
 					id: true,
@@ -54,7 +51,6 @@ export async function getActiveTestWithGrade(date: Date, userId: number) {
                 select: {
                     id: true,
                     grade: true,
-                    note: true,
                     createdAt: true,
                 },
                 take: 1,
@@ -67,7 +63,6 @@ export async function getActiveTestWithGrade(date: Date, userId: number) {
 		},
 		where: {
 			isActive: true,
-			isPassed: false,
 			testOn: new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + (date.getDate().toString().length === 1 ? '0' + date.getDate() : date.getDate())),
 		},
 	});

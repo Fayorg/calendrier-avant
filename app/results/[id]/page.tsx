@@ -24,11 +24,10 @@ export default function Page({ params }: { params: { id: string } }) {
 
 	useEffect(() => {
 		featchResults(testId);
+		setTimeout(() => {
+			featchResults(testId);
+		}, 5000);
 	}, [testId]);
-
-	setTimeout(() => {
-		featchResults(testId);
-	}, 5000);
 
 	return (
 		<div className={'p-4 md:p-12 w-full h-screen bg-black flex flex-col justify-between gap-y-4'}>

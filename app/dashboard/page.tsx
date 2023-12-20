@@ -8,10 +8,9 @@ export default async function Dashboard() {
 	console.log(authSession);
 	if (!authSession) return redirect('/');
 
-	const tests = await prisma.test.findMany({ select: { isActive: true, isPassed: true, id: true, testOf: { select: { id: true, firstName: true, lastName: true, isTeacher: true } } } });
+	const tests = await prisma.test.findMany({ select: { isActive: true, id: true, testOf: { select: { id: true, firstName: true, lastName: true, isTeacher: true } } } });
 
 	const activeTests = tests.filter((test) => test.isActive);
-	const passedTests = tests.filter((test) => test.isPassed);
 
 	return (
 		<div>
