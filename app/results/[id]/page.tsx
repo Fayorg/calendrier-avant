@@ -24,7 +24,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 	useEffect(() => {
 		featchResults(testId);
-		setTimeout(() => {
+		setInterval(() => {
 			featchResults(testId);
 		}, 5000);
 	}, [testId]);
