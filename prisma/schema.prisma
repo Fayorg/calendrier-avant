@@ -24,6 +24,7 @@ model Test {
     id        Int      @id @default(autoincrement())
     testOfId  Int      @unique
     testOn    DateTime @db.Date
+    canVote   Boolean  @default(false)
     createdAt DateTime @default(now())
     testOf    Users    @relation(fields: [testOfId], references: [id])
     grades    Grade[]
