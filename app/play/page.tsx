@@ -12,9 +12,6 @@ export default async function Play() {
 		redirect('/');
 	}
 
-	const now = new Date();
-	const todayTest = await getFirstActiveTest(now);
-
 	return (
 		<div className={'w-full h-[100vh] text-[#F0F0F0] bg-black p-12 flex flex-col items-center justify-center gap-y-28'}>
 			<Image src={Logo} alt={'Logo'} width={100} height={200} className={'mx-auto w-full md:w-[400px]'} />
