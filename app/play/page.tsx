@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Logo from '/images/logo.svg';
+import Logo from '@images/logo.svg';
 import { getAuthServerSession } from '@/lib/authenticate';
 import { redirect } from 'next/navigation';
 import { getFirstActiveTest } from '@/actions/mangeTest';

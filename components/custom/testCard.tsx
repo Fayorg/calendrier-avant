@@ -1,6 +1,6 @@
 'use client';
 
-import Calendar from '../../images/date.svg';
+import Calendar from '@images/date.svg';
 import Image from 'next/image';
 
 import { Ban, Snowflake, CircleOff } from 'lucide-react';
