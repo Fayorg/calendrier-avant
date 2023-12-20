@@ -23,8 +23,8 @@
       "@components/*": ["./components/*"],
       "@lib/*": ["./lib/*"],
       "@styles/*": ["/styles/*"],
-      "@santa/*": ["./images/santa/*"],
-      "@images/*": ["./images/*"],
+      "@santa/*": ["./assets/images/santa/*"],
+      "@images/*": ["./assets/images/*"],
       "@assets/*": ["./assets/*"],
     }
   },

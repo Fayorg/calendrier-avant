@@ -6,7 +6,7 @@ export interface Results {
 	total: number;
 }
 
-export async function getResults(testId: number) {
+export async function getStudentResults(testId: number) {
     const grades = await prisma.grade.findMany({ where: { testId: testId, user: { isTeacher: false } } });
 
 	const allGrades = ['1', '1.5', '2', '2.5', '3', '3.5', '4', '4.5', '5', '5.5', '6'];

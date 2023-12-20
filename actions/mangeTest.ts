@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prisma";
 
+// Only a test function
 export async function setTestActive(id: number, active: boolean) {
     const users = await prisma.users.findFirst();
 
@@ -11,7 +12,7 @@ export async function setTestActive(id: number, active: boolean) {
 
 }
 
-export async function getActiveTest(date: Date) {
+export async function getFirstActiveTest(date: Date) {
     return await prisma.test.findFirst({
 		select: {
 			id: true,
@@ -34,7 +35,7 @@ export async function getActiveTest(date: Date) {
 	});
 }
 
-export async function getActiveTestWithGrade(date: Date, userId: number) {
+export async function getFirstActiveTestWithGrade(date: Date, userId: number) {
     return await prisma.test.findFirst({
 		select: {
 			id: true,
