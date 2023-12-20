@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Logo from '/images/logo.svg';
 import { getAuthServerSession } from '@/lib/authenticate';
 import { redirect } from 'next/navigation';
-import { getActiveTest } from '@/actions/mangeTest';
+import { getFirstActiveTest } from '@/actions/mangeTest';
 import { TodayTest } from './TodayTest';
 
 export default async function Play() {
@@ -13,7 +13,7 @@ export default async function Play() {
 	}
 
 	const now = new Date();
-	const todayTest = await getActiveTest(now);
+	const todayTest = await getFirstActiveTest(now);
 
 	return (
 		<div className={'w-full h-[100vh] text-[#F0F0F0] bg-black p-12 flex flex-col items-center justify-center gap-y-28'}>

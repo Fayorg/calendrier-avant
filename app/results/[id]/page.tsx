@@ -3,7 +3,7 @@ import { Chart } from '@components/custom/chart';
 import logo from '@images/logo.svg';
 import Image from 'next/image';
 import ginger from '@images/ginger.png';
-import { getResults, getTeacherResult, Results } from '@/actions/results';
+import { getStudentResults, getTeacherResult, Results } from '@/actions/results';
 import { useEffect, useState } from 'react';
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -17,7 +17,7 @@ export default function Page({ params }: { params: { id: string } }) {
 			.then((res) => setTeacherGrade(res?.grade || 0))
 			.catch((err) => console.error(err));
 
-		getResults(testId)
+		getStudentResults(testId)
 			.then((res) => setData(res))
 			.catch((err) => console.error(err));
 	}

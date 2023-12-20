@@ -1,6 +1,6 @@
 'use client';
 
-import { getActiveTestWithGrade } from '@/actions/mangeTest';
+import { getFirstActiveTestWithGrade } from '@/actions/mangeTest';
 import { TestCard } from '@/components/custom';
 import { Session } from 'next-auth';
 import { signOut } from 'next-auth/react';
@@ -14,7 +14,7 @@ export function TodayTest({ session }: { session: Session }) {
 	const [activeTest, setActiveTest] = useState<{ data: any | null; error: Error | null; isLoading: boolean }>({ isLoading: true, data: null, error: null });
 
 	useEffect(() => {
-		getActiveTestWithGrade(new Date(), session.user.id)
+		getFirstActiveTestWithGrade(new Date(), session.user.id)
 			.catch((err) => setActiveTest({ data: null, error: err, isLoading: false }))
 			.then((data) => setActiveTest({ data, error: null, isLoading: false }));
 	}, [session.user.id]);
