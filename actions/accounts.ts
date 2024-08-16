@@ -8,7 +8,9 @@ interface GetAccountsParameters {
     skip?: number;
 }
 
-export async function getAccounts(args?: GetAccountsParameters): Promise<Pick<Users, "id" | "firstName" | "lastName" | "isAdmin" | "isTeacher">[]> {
+export type Account = Pick<Users, "id" | "firstName" | "lastName" | "isAdmin" | "isTeacher">;
+
+export async function getAccounts(args?: GetAccountsParameters): Promise<Account[]> {
     return await prisma.users.findMany({
         take: args?.take,
         skip: args?.skip,
